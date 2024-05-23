@@ -193,10 +193,11 @@ function selectTimeSlotIfAny() {
     if (foundMatchingRange) {
       slot.click();
       finished = true;
-      alert("Here is your time slot, good luck! :)");
+      return true;
     }
   }
 
+  return false;
 }
 
 function goToNextWeekIfMakesSense() {
@@ -205,21 +206,26 @@ function goToNextWeekIfMakesSense() {
 
   // week if not open yet, does not make sense to view the next
   if (occupiedCount.length + freeCount.length === 0) {
-    return;
+    return false;
   }
 
   // navigate to the next week if possible
   var nextButtons = document.querySelectorAll(".time-slots-header .next a");
   if (nextButtons.length > 0) {
     nextButtons[0].click();
+    return true;
   }
+
+  return false;
 }
 
 function goBackToCurrentWeek() {
   var currentButtons = document.querySelectorAll(".time-slots-header .current a");
   if (currentButtons.length > 0) {
     currentButtons[0].click();
+    return true;
   }
+  return false;
 }
 
 function isLoading() {
@@ -232,9 +238,12 @@ function step() {
   if (finished || isLoading()) {
     return;
   }
-  selectTimeSlotIfAny();
-  goToNextWeekIfMakesSense();
-  goBackToCurrentWeek();
+
+  if (selectTimeSlotIfAny()) return;
+  if (goToNextWeekIfMakesSense()) return;
+  if (goBackToCurrentWeek()) return;
+
+  console.log("Neither action was taken...")
 }
 
 setInterval(step, 300);
