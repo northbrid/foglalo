@@ -115,3 +115,126 @@ while(true) {
 if (ranges.length === 0) {
   alert("No ranges were added. Script terminated.");
 }
+
+// ====================== //
+// ===== AUTOMATION ===== //
+// ====================== //
+var finished = false;
+
+function selectTimeSlotIfAny() {
+  var timeSlots = document.querySelectorAll('.time-slots td.success button[type="submit"]');
+  for(slot of timeSlots) {
+
+    // parse slot date
+    var slotDate = new Date([
+      slot.value.substr(0,4), "-",
+      slot.value.substr(4,2), "-",
+      slot.value.substr(6,2), "T",
+      slot.value.substr(8,2), ":",
+      slot.value.substr(10,2), ":00.000"
+    ].join(""))
+
+    // check ranges
+    var foundMatchingRange = false;
+    for(range of ranges) {
+
+      // check for year matching
+      if (slotDate.getFullYear() < range[0].getFullYear()) continue;
+      if (slotDate.getFullYear() > range[1].getFullYear()) continue;
+
+      // check for month matching
+      if (range[0].getFullYear() === range[1].getFullYear()) {
+        if (slotDate.getMonth() < range[0].getMonth()) continue;
+        if (slotDate.getMonth() > range[1].getMonth()) continue;
+      } else if (slotDate.getFullYear() === range[0].getFullYear()) {
+        if (slotDate.getMonth() < range[0].getMonth()) continue;
+      } else if (slotDate.getFullYear() === range[1].getFullYear()) {
+        if (slotDate.getMonth() > range[1].getMonth()) continue;
+      }
+
+      // check for day matching
+      if (range[0].getFullYear() === range[1].getFullYear()) {
+        if (range[0].getMonth() === range[1].getMonth()) {
+          if (slotDate.getDate() < range[0].getDate()) continue;
+          if (slotDate.getDate() > range[1].getDate()) continue;
+        } else if (slotDate.getMonth() === range[0].getMonth()) {
+          if (slotDate.getDate() < range[0].getDate()) continue;
+        } else if (slotDate.getMonth() === range[1].getMonth()) {
+          if (slotDate.getDate() > range[1].getDate()) continue;
+        }
+      } else if (slotDate.getFullYear() === range[0].getFullYear()) {
+        if (slotDate.getMonth() === range[0].getMonth()) {
+          if (slotDate.getDate() < range[0].getDate()) continue;
+        }
+      } else if (slotDate.getFullYear() === range[1].getFullYear()) {
+        if (slotDate.getMonth() === range[1].getMonth()) {
+          if (slotDate.getDate() > range[1].getDate()) continue;
+        }
+      }
+
+      // check for hours matching
+      if (slotDate.getHours() < range[0].getHours()) continue;
+      if (slotDate.getHours() > range[1].getHours()) continue;
+
+      // check for minutes matching
+      if (range[0].getHours() === range[1].getHours()) {
+        if (slotDate.getMinutes() < range[0].getMinutes()) continue;
+        if (slotDate.getMinutes() > range[1].getMinutes()) continue;
+      } else if (slotDate.getHours() === range[0].getHours()) {
+        if (slotDate.getMinutes() < range[0].getMinutes()) continue;
+      } else if (slotDate.getHours() === range[1].getHours()) {
+        if (slotDate.getMinutes() > range[1].getMinutes()) continue;
+      }
+
+      foundMatchingRange = true;
+      break;
+    }
+
+    if (foundMatchingRange) {
+      slot.click();
+      finished = true;
+      alert("Here is your time slot, good luck! :)");
+    }
+  }
+
+}
+
+function goToNextWeekIfMakesSense() {
+  var occupiedCount = document.querySelectorAll(".time-slots td.success");
+  var freeCount = document.querySelectorAll(".time-slots td.danger");
+
+  // week if not open yet, does not make sense to view the next
+  if (occupiedCount.length + freeCount.length === 0) {
+    return;
+  }
+
+  // navigate to the next week if possible
+  var nextButtons = document.querySelectorAll(".time-slots-header .next a");
+  if (nextButtons.length > 0) {
+    nextButtons[0].click();
+  }
+}
+
+function goBackToCurrentWeek() {
+  var currentButtons = document.querySelectorAll(".time-slots-header .current a");
+  if (currentButtons.length > 0) {
+    currentButtons[0].click();
+  }
+}
+
+function isLoading() {
+  var loader = document.querySelector('.loader');
+  return getComputedStyle(loader, ':before').getPropertyValue('content') !== "none";
+}
+
+function step() {
+  console.log("step...");
+  if (finished || isLoading()) {
+    return;
+  }
+  selectTimeSlotIfAny();
+  goToNextWeekIfMakesSense();
+  goBackToCurrentWeek();
+}
+
+setInterval(step, 300);
