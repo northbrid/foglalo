@@ -1,3 +1,5 @@
+| Name | Value |
+| ---- | ----- | 
 | URL Converter | https://statically.io/convert/ |
 | Github Raw URL | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo.js |
 | CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo.js |
