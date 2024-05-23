@@ -120,6 +120,7 @@ if (ranges.length === 0) {
 // ===== AUTOMATION ===== //
 // ====================== //
 var finished = false;
+var currentWeek = true;
 
 function selectTimeSlotIfAny() {
   var timeSlots = document.querySelectorAll('.time-slots td.success button[type="submit"]');
@@ -205,13 +206,15 @@ function goToNextWeekIfMakesSense() {
   var freeCount = document.querySelectorAll(".time-slots td.danger");
 
   // week if not open yet, does not make sense to view the next
-  if (occupiedCount.length + freeCount.length === 0) {
+  if (!currentWeek && (occupiedCount.length + freeCount.length === 0)) {
+    console.log("No time slots found, not going to the next week...");
     return false;
   }
 
   // navigate to the next week if possible
   var nextButtons = document.querySelectorAll(".time-slots-header .next a");
   if (nextButtons.length > 0) {
+    currentWeek = false;
     nextButtons[0].click();
     return true;
   }
@@ -222,6 +225,7 @@ function goToNextWeekIfMakesSense() {
 function goBackToCurrentWeek() {
   var currentButtons = document.querySelectorAll(".time-slots-header .current a");
   if (currentButtons.length > 0) {
+    currentWeek = true;
     currentButtons[0].click();
     return true;
   }
@@ -246,4 +250,4 @@ function step() {
   console.log("Neither action was taken...")
 }
 
-setInterval(step, 300);
+setInterval(step, 600);
