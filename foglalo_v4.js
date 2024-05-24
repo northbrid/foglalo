@@ -117,6 +117,31 @@ if (ranges.length === 0) {
 }
 
 // ====================== //
+// ==== NOTIFICATION ==== //
+// ====================== //
+
+// https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SNS.html
+function publishSNSMessage() {
+  var sns_client = new AWS.SNS({
+    apiVersion: 'latest',
+    region: "eu-central-1",
+    credentials: {
+      accessKeyId: "ASIATCKAPVRXCDM2RNNK",
+      secretAccessKey: "uk07SPDf+3Gz6Q1NT4hLe9Z7g4kKX+bRVYUEoAHp",
+      sessionToken: "IQoJb3JpZ2luX2VjEBYaDGV1LWNlbnRyYWwtMSJIMEYCIQD3a11AT+pGpE9Ntk06FJZJe08PiRoc7IFywK0lOERaqAIhANsIEw6xbkfLJvxyDCKabfUcrGa14t3byuMZVSsOpw9FKqoCCI///////////wEQABoMMjExMTI1NTEzMzI2Igw/YD0BB6d2ljkb43sq/gGavoMOHXhKkq7ZaLQeY/FGPPNYt9JwkOKLD1jjtR520gQDK7uwK2cs0oyyztuPa6QIEmllLje/mDHlPcc3+Kj9OYqvcZ0qtHEv4xCc9qeWtPKpeFZH7LX/gBeP6mBBM40TELPEH0uDa0cGJQXEa+4Rxqoz4WuJrwAQ9wrFBvV+zJJUU6y5WzFlhl7kGYecDv/XHkGGyi4ojkAc84L6kv92EyHa2kDfK4HASybyFRBz2F/hFrnF2HoWi4kXhEq4jHwIq5O9TUJ4d6Tf+w7XyF/Sc913SgnFxmfp5EEX7XIgAQMZ5iOY/q+8HLPE5DO6sAt/lj0ytZ3VtWRK7jPOXzD8v8KyBjqcAaxenNtzJRV934VVNsMx3m01gLHDL6jM9aP2v/gdcExjIVGkQcT5lvHlnEdUiPjD4Iu32yrNAGlRhc0DV0ImCzCUniLWceFBTg4iXNsvp/uydHiV+WdwRK3tBZIsARe2rz8Ev1KLS+4SyeAKEtZfn5XEzgCXwxXrNr8DPfmB1+s3Bgy4XsAqd0q813qeAjahXyYhhVMPUeaavPRgHw=="
+    }
+  });
+  sns_client.publish({
+    Message: "Szia Norman, talaltam egy idopontot, nezd meg legyszives!",
+    TopicArn: "arn:aws:sns:eu-central-1:211125513326:foglalo_notification_topic"
+  }, function(err, data) {
+    console.log(err, data);
+    window.last_error = err;
+    if (err) { console.log(err.message); }
+  });
+}
+
+// ====================== //
 // ===== AUTOMATION ===== //
 // ====================== //
 var finished = false;
@@ -194,6 +219,7 @@ function selectTimeSlotIfAny() {
     if (foundMatchingRange) {
       slot.click();
       finished = true;
+      publishSNSMessage();
       return true;
     }
   }
@@ -238,7 +264,6 @@ function isLoading() {
 }
 
 function step() {
-  console.log("step...");
   if (finished || isLoading()) {
     return;
   }
@@ -250,4 +275,5 @@ function step() {
   console.log("Neither action was taken...")
 }
 
-setInterval(step, 600);
+// 30 seconds would be good
+setInterval(step, 30000);

@@ -41,15 +41,17 @@ More info: https://chromestatus.com/feature/5166834424217600
 | Name            | Value                                                                  |
 |-----------------|------------------------------------------------------------------------| 
 | URL Converter   | https://statically.io/convert/                                         |
-| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v3.js           |
-| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v3.js |
-| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v3.js      |
+| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v4.js           |
+| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v4.js |
+| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v4.js      |
 
 # Injecting the script
 Paste this code snippet in Chrome DevTools to load the script:
 ```
-var src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v3.js";
-document.body.appendChild(document.createElement("script")).setAttribute("src", src);
+var aws_src = "https://sdk.amazonaws.com/js/aws-sdk-2.1044.0.min.js"
+document.body.appendChild(document.createElement("script")).setAttribute("src", aws_src);
+var src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v4.js";
+document.body.appendChild(document.createElement("script")).setAttribute("src", my_src);
 ```
 
 # Example inputs
