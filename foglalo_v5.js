@@ -270,12 +270,16 @@ function step() {
     return;
   }
 
+  // select time slot if available
+  if (selectTimeSlotIfAny()) return;
+
+  // do not repeat paging too fast
   if (skipCounter > 0) {
     skipCounter--;
     return;
   }
 
-  if (selectTimeSlotIfAny()) return;
+  // navigate to next week, or go back
   if (goToNextWeekIfMakesSense()) return;
   if (goBackToCurrentWeek()) {
     skipCounter = 10;
