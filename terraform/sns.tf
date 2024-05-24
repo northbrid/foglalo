@@ -1,5 +1,5 @@
 resource "aws_sns_topic" "foglalo_notification_topic" {
-  name = "user-updates-topic"
+  name = "foglalo_notification_topic"
 }
 
 resource "aws_sns_topic_subscription" "foglalo_notification_sms_sub" {
