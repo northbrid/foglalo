@@ -146,6 +146,7 @@ function publishSNSMessage() {
 // ====================== //
 var finished = false;
 var currentWeek = true;
+var skipCounter = 0;
 
 function selectTimeSlotIfAny() {
   var timeSlots = document.querySelectorAll('.time-slots td.success button[type="submit"]');
@@ -268,12 +269,20 @@ function step() {
     return;
   }
 
+  if (skipCounter > 0) {
+    skipCounter--;
+    return;
+  }
+
   if (selectTimeSlotIfAny()) return;
   if (goToNextWeekIfMakesSense()) return;
-  if (goBackToCurrentWeek()) return;
+  if (goBackToCurrentWeek()) {
+    skipCounter = 10;
+    return;
+  }
 
   console.log("Neither action was taken...")
 }
 
 // 30 seconds would be good
-setInterval(step, 30000);
+setInterval(step, 3000);
