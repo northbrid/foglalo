@@ -41,16 +41,16 @@ More info: https://chromestatus.com/feature/5166834424217600
 | Name            | Value                                                                  |
 |-----------------|------------------------------------------------------------------------| 
 | URL Converter   | https://statically.io/convert/                                         |
-| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v6.js           |
-| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v6.js |
-| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v6.js      |
+| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v7.js           |
+| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v7.js |
+| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v7.js      |
 
 # Injecting the script
 Paste this code snippet in Chrome DevTools to load the script:
 ```
 var aws_src = "https://sdk.amazonaws.com/js/aws-sdk-2.1044.0.min.js"
 document.body.appendChild(document.createElement("script")).setAttribute("src", aws_src);
-var my_src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v6.js";
+var my_src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v7.js";
 document.body.appendChild(document.createElement("script")).setAttribute("src", my_src);
 ```
 
