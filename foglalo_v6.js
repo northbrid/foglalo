@@ -121,14 +121,14 @@ if (ranges.length === 0) {
 // ====================== //
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SNS.html
-function publishSNSMessage() {
+function publishSNSMessage(callback) {
   var sns_client = new AWS.SNS({
     apiVersion: 'latest',
     region: "eu-central-1",
     credentials: {
-      accessKeyId: "ASIATCKAPVRXAOGBLCNW",
-      secretAccessKey: "aVDry4NEWLj8hCil5Y3VUrJ+dum8L8g+zP1UQdoS",
-      sessionToken: "IQoJb3JpZ2luX2VjEBcaDGV1LWNlbnRyYWwtMSJIMEYCIQCzDjNe+coZ4ObfX5ZWuNot79O0s3CBNanFFWQdRKoCBgIhAKwE3pUsqmwZcu/aa9/zin6YNN16dXN4x1Dojj5MCxE9KqoCCJD//////////wEQABoMMjExMTI1NTEzMzI2Igyw+KEiSaK0KdDf/M8q/gGKh6onO8nkoWhamEOzgve4vK57sunJx8b5bvIWv8r6FLFWGxuiP0uS00VtTYsR+08JFBuRcfuxIfehQqzegzW9rfXZu6nKXK4KF8vVivnI23D0BARbr5Tmk7CdyKSCiygVtFe4r6DvPmKQ0WQtoT4zF5URDPGjwZlsqGK4MzLp0m6RYxg6Ct0gWaBpzR6byUAt5jL2bdkd8YEioyye7HfoeKsT+0p7LBKjtCaHS53dA7krl2TLrlMrSRE+lVFQxUIU6dMiO+obvq4cP/0UAsOS8L5kxrkk5XQPDt8Bm9m8MHFfO6vnU0A9rYTHjzV6UcFpGDYP3F+upagaR0azmTDn0MKyBjqcAWb88aJrFxveOCyVjk8NciM6GP4Acki9WKaZRPM3Mked/h7bt9MpvKTU3V4oQuDfWjpNFbg3i+GNnRniBy5b3k/IiekTORO/zrzLW0c4qdBGxSZPyGret1vRQl5whooWOBNISDvlgeZ/Pwrwb3YL6t9gNbwDbqF39cj5uO3ULo4chG0rM21mUr9PytO/2q3b+ymsd7vBHZXYrn8v8A=="
+      accessKeyId: "ASIATCKAPVRXKU62LMEX",
+      secretAccessKey: "hWcnq6HHDtzaFclkfnlNmyz5XzghbWR66koIhOpX",
+      sessionToken: "IQoJb3JpZ2luX2VjEBcaDGV1LWNlbnRyYWwtMSJGMEQCIB2uUhPbvIVdrSg0OqTcTKn/fbQwK8LcCNLSCkbPx6U9AiBOMmzBoqK/KqprULRaSamN8zXx8vd4FUOESbQBGcfHTiqqAgiQ//////////8BEAAaDDIxMTEyNTUxMzMyNiIMd/uO+JUvsbMb5IdLKv4Bic7Dv81ZnZL4Lr2tIvOKdQGn6VWqDkYHI4tw1Nj0G4dyV/gThvSHmv7FmjjLYHjml+C9It9E+AGAGUcEH62iX8znn8aWFMHxp1jPqQ8IDAkNOJLxNPNRGnAXRCsvDFGvIsnWk4b5e3yBrdoJcinG8p5H4Q4Rbvv+R1CLg84jmXdMSbEdu3Ycdu6/qzDEHJzK9jI8MJ/M8c5/MUN3b1RhqER+fQF1Ui2tnJs1eWT9p4F7e+vMBOPmmfAwxizxgHe6GOvyg00vZXZF3tamk/ORrYxkO9CL13RRaTCWa+S1UR4dOlk70/ylQrgY//uWOt0KiBBA8oy2hwP64qYRDOIw1dzCsgY6ngF0jRFG0xABl/y8vb1pHtuPBzNQ2K6svHzY2onhE0NPDXZdJew2ALjuj3nf7j81vkj4keUTABvVHg9nMXBFO/h7b9B7+aD9C8eSnM3MwxFJeu7vJJcaVM3SNkdnd4bSYKsq821fy0OMhXBP4CBA2NsOwsAo1ZeyBDmtckGAiTSfkpew0sDLZcr9Hfel6JxFPpKfORqcA0qb3/rHZ5bs4A=="
     }
   });
   sns_client.publish({
@@ -138,6 +138,7 @@ function publishSNSMessage() {
     console.log(err, data);
     window.last_error = err;
     if (err) { console.log(err.message); }
+    callback();
   });
 }
 
@@ -219,9 +220,12 @@ function selectTimeSlotIfAny() {
 
     if (foundMatchingRange) {
       finished = true;
-      publishSNSMessage();
-      // we lose the control at this point
-      slot.click();
+      publishSNSMessage(function() {
+        slot.click();
+      });
+      setTimeout(function() {
+        slot.click();
+      }, 1000);
       return true;
     }
   }
