@@ -218,9 +218,10 @@ function selectTimeSlotIfAny() {
     }
 
     if (foundMatchingRange) {
-      slot.click();
       finished = true;
       publishSNSMessage();
+      // we lose the control at this point
+      slot.click();
       return true;
     }
   }
