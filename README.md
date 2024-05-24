@@ -22,7 +22,7 @@ The different tasks uses different credentials
 
 The generated temporary session token can be used in the JavaScript.
 
-## Registering phone number in AWS
+# Registering phone number in AWS
 In Sandbox mode, AWS allows you to send SMS messages only to verified phone numbers.
 Adding the phone number cannot be done in terraform, you need to do it manually.
 To add and verify your phone number, follow these steps:
