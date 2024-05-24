@@ -45,6 +45,12 @@ More info: https://chromestatus.com/feature/5166834424217600
 | GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v7.js |
 | CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v7.js      |
 
+# Disabling Content-Security-Policy
+Content-Security-Policy is an HTTP header that controls what the scripts can do in the webpage.
+This will not prevent our script from running, but prevents it from communicating with AWS and sending SMS.
+A workaround for this is install the following Chrome extension, and then disable CSP with it:
+https://chromewebstore.google.com/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden
+
 # Injecting the script
 Paste this code snippet in Chrome DevTools to load the script:
 ```
