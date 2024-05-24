@@ -13,8 +13,8 @@ The IAM user will be created by terraform, so first you can create the __root.sh
 # Terraform structure
 In terraform, we have
 * An SNS __topic__, and a subscription to send SMS to a specific phone number
-* An IAM __role__, permissioned only to publish message in a specific SNS topic
-* An IAM __user__, permissioned only to assume a specific role
+* An IAM __role__, permissioned only to publish message in this specific SNS topic
+* An IAM __user__, permissioned only to assume this specific role
 
 The different tasks uses different credentials
 * The __terraform__ scripts are running with the credentials of the root AWS user
