@@ -114,6 +114,11 @@ while(true) {
 
 if (ranges.length === 0) {
   alert("No ranges were added. Script terminated.");
+} else {
+  publishSNSMessage(
+    "A script elindult, ez pedig egy teszt uzenet",
+    function() {}
+  )
 }
 
 // ====================== //
@@ -121,18 +126,18 @@ if (ranges.length === 0) {
 // ====================== //
 
 // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/SNS.html
-function publishSNSMessage(callback) {
+function publishSNSMessage(msg, callback) {
   var sns_client = new AWS.SNS({
     apiVersion: 'latest',
     region: "eu-central-1",
     credentials: {
-      accessKeyId: "ASIATCKAPVRXOHECEDX3",
-      secretAccessKey: "LVnH0bZCkG2iG2FQgSS9SdOyqmOnp79OPxWw0m8d",
-      sessionToken: "IQoJb3JpZ2luX2VjEBgaDGV1LWNlbnRyYWwtMSJIMEYCIQDyzJ4mbFk68IyN1BK+56ZIm04OUZCPzxJ/YgjdUxCOowIhAIvw+BfPqGmwZYNy1UpD4MraZp1QvxNuBpIWvOGkZZeNKqoCCJH//////////wEQABoMMjExMTI1NTEzMzI2IgzpPmm+4D1+WDf+lIAq/gG7Eqbg0uCtOc2750KiE7jqfymzzlRMoumRQFCSYeCcIuBS6tlentJf7ECynq2dt4fHRfW85ORQOoNDc4PiZV4xJYwQad5ESzpYXHYch4f7rfRs7hzceRgPveF7nzIZNJqFnkjMZDXNnp3bYF4yG0ziUxBdsgTGjuDTk9ZO47nG/LauYW5E3766LYvcZ1fZYDD4S51RrpboO23PcvqEA+oHOUFwIgKrxDgOYpsiAL9aVhcOHFFZ5XjHgjQpmexG3xj/dZXvaWDTQC5ZKCjhqjFhmUZ0rczYGv0gPt/Y9CweG8gaf2aTWL82I9jGsSsNeWfeBzzVipr6Sj/89LcW5jCC5MKyBjqcAUKzSt0nDAifk4XSRMoCL6g/bJNNipN2Dgm7vF4ckCnruXXHQK+LekKU0OVUPYDq6WvRqIwn0QgvCi/sUqa6o71/emI8blqaGKagqgX4AZHXzpTTSj4GcsttsTZB7ntvEC3VRvc6e8iMrEy2fHghKwZWpSVV1UBG7jfwN0oTg1R2MqnRwnJaFspueq2ts+NtS2uHj9j+7J/FgV+ZFQ=="
+      accessKeyId: "ASIATCKAPVRXISR5CZW7",
+      secretAccessKey: "y63ScoTCErKKV5w0iyGw7U6vRZAmuFmCnf4xstr6",
+      sessionToken: "IQoJb3JpZ2luX2VjEBgaDGV1LWNlbnRyYWwtMSJHMEUCIQDYnVsIVeIm3a85JvC6cef5WAoeIJJZ2bu1DZmpFeScEgIgBTykMVSnx/Kz1wz6wpiATu/K0JgzsNib3FAWzgT0AcAqqgIIkf//////////ARAAGgwyMTExMjU1MTMzMjYiDP5kWGnDPEdWtEG33ir+AZLEt32XbXrygjhOyQShVn8FHMlXbaWboCDnSXFn6ZmyOJIPdQ/UZSl55jKys8vLbkKgB3IzaIRHPS1jJnR/9VErtpEGfhTLMENNKMeonRwa0RHi/HYGF2FVZK++S4AIBgPrW78LubUDSHH4ucufyBkga2o9PWaGpKJhqGf/0yepfEqDm6/HgaiHbhJI1DccAadk7xUVPXzLB1C+xzCYPBYODQJjg7098sH7vVXOfvt8TUfaTPjjtLC6hZf5Yv4eBnUntNUcj5lTG0iuqwjVpZi68uBlx48ckqbAfy9WPXnJXmqdTevo6+9ioShbvErd66drJh1sunYJpdFATz5dMODuwrIGOp0BYU+S6g7caEiAc3U4EMNWqdKcrukxUzxYzsfxnbiHsoiXSFWkkmo+1aqt4u7vJhW4jEK/38XNOSRvGBn7kyqIVwpfRvd48E5AAZcMGwKBmdfSWzXhVCGXDWpzcuj8S7Q5MjG1Rhq7gsN6EXYDTLNmkoNeFco4cdEY3NnU/yg0XH9QtLeMqr8FjiHcp42MTqzG2pU0sQsIhJoWrHR/Jw=="
     }
   });
   sns_client.publish({
-    Message: "Szia Norman, talaltam egy idopontot, nezd meg legyszives!",
+    Message: msg,
     TopicArn: "arn:aws:sns:eu-central-1:211125513326:foglalo_notification_topic"
   }, function(err, data) {
     console.log(err, data);
@@ -220,9 +225,12 @@ function selectTimeSlotIfAny() {
 
     if (foundMatchingRange) {
       finished = true;
-      publishSNSMessage(function() {
-        slot.click();
-      });
+      publishSNSMessage(
+        "Szia Norman, talaltam egy idopontot, nezd meg legyszives!",
+        function() {
+          slot.click();
+        }
+      );
       setTimeout(function() {
         slot.click();
       }, 1000);
