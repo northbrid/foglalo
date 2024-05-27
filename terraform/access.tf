@@ -1,5 +1,6 @@
 resource "aws_iam_role" "foglalo_publish_role" {
   name = "foglalo_publish_role"
+  max_session_duration = 28800
   inline_policy {
     name = "foglalo_publish_policy"
     policy = jsonencode(
