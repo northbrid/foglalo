@@ -52,10 +52,13 @@ A workaround for this is install the following Chrome extension, and then disabl
 https://chromewebstore.google.com/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden
 
 # Injecting the script
-Paste this code snippet in Chrome DevTools to load the script:
+Paste this code snippet in Chrome DevTools to load AWS SDK:
 ```
 var aws_src = "https://sdk.amazonaws.com/js/aws-sdk-2.1044.0.min.js"
 document.body.appendChild(document.createElement("script")).setAttribute("src", aws_src);
+```
+Allow a few seconds for it to load, and then paste this snippet:
+```
 var my_src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v9.js";
 document.body.appendChild(document.createElement("script")).setAttribute("src", my_src);
 ```
@@ -63,3 +66,7 @@ document.body.appendChild(document.createElement("script")).setAttribute("src", 
 # Example inputs
 * 2024.05.23.-2024.06.30. 06:00-12:00
 * 2024.07.01.-2024.07.07. 14:00-18:00
+
+# Rooms for improvement
+* Youtube autoplay popup window instead of the AWS things
+* Decrease the delay counter even if the page is still loading
