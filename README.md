@@ -51,6 +51,13 @@ This will not prevent our script from running, but prevents it from communicatin
 A workaround for this is install the following Chrome extension, and then disable CSP with it:
 https://chromewebstore.google.com/detail/disable-content-security/ieelmcmcagommplceebfedjlakkhpden
 
+When this plugin is installed, it has a button in the toolbar, which has 2 states:
+* If the icon is grey, then the CSP works normally, and the plugin has no effect
+* If the icon is pink, then the plugin will manipulate the CSP headers in the HTTP responses
+
+The plugin has effect only at the point when the page gets loaded, 
+so you need to refresh the page after enabling!
+
 # Injecting the script
 Paste this code snippet in Chrome DevTools to load AWS SDK:
 ```
@@ -70,3 +77,14 @@ document.body.appendChild(document.createElement("script")).setAttribute("src", 
 # Rooms for improvement
 * Youtube autoplay popup window instead of the AWS things
 * Decrease the delay counter even if the page is still loading
+* Test SNS sending should happen before asking for ranges. This will spare some time.
+
+# Observations
+* AWS allows you to send SMS messages only for total 1 USD in sandbox mode. 
+  To increase this limit, you must justify your use-case.
+* The application shares the same session across multiple open windows.
+  So, if you open the application in a new window, and it leads you to the topic selection, 
+  Then the other windows will be also reverted to the topic selection page.
+  * I am afrad that this will also happen when you select a time slot in the calendar,
+    So it's better to stay on the safe side, and run the multiple windows in multiple browser profiles.
+    Note that incognito mode is one profile, so opening multiple incognito windows will not help.
