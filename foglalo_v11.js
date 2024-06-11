@@ -131,9 +131,9 @@ function publishSNSMessage(msg, callback) {
     apiVersion: 'latest',
     region: "eu-central-1",
     credentials: {
-      accessKeyId: "ASIATCKAPVRXJAUK5QL4",
-      secretAccessKey: "JR4pHdXUyQZQxYdUSifegWiHIojls/werxz8JH6c",
-      sessionToken: "IQoJb3JpZ2luX2VjEG4aDGV1LWNlbnRyYWwtMSJGMEQCIDUxbp/sZJdUIYEw42nZQ8oo0jduFJRS0fl3FPtv0/G3AiBg4w/+KQWmRNHXNiyo6iOklkgbOMAE/CbSQw7PBwuIfiqrAgjo//////////8BEAAaDDIxMTEyNTUxMzMyNiIMvghCHbYPJLTJyclQKv8Bs/MHX84CETBi5o7zub2XNGFCtyExBlYvTEjxBLs/knaaM0DKynhzc6mCkXDyKlZUM11Oh3SeNwgU7eXbpeRKhuQL0aYIDlW549qPjwpNg43rD67MZ5vVpughU0dqgnikbsRQEzNJ0tL+Q9hAWeYpk71beZzX1UQF59JexxfWK+KIqqwRuk8ePMbzJOf20em7HAXyYYBD4cLfq5Yf57Z8FI5BYLxw3L1E5a8PmDdPvGZCs5ioWLileBPpFAwld+Xu94EuRy2gWFlJrTGUp785mARA6kHP5Hvr6hGmfPG1eviWnIxWVK68FBfG0YjAnViwAj5bNLsBXRgRVgOVAXKWMLLx1bIGOp4BKrWjxFBradLk49yNJfiF0G9QksQfPAkz904fENSXr6zWWzfYbuvcjdX8XYDXxUXiveHmohaGmr1raTA+gbTKFyi3btQqJtVGrAU6h/dVpWZcOTECcGN3IlgEknjNBlrQ22PQ6uDcwkSm0/hhC2Tg+rvwSTNmtNykVLMSQEOmdT+J7lg6rCr+KxX2COP+ewAcZCKUOibQKZJC+ySKJpc="
+      accessKeyId: "ASIATCKAPVRXFSC4XMEX",
+      secretAccessKey: "/XVgEr/3wRz3eubd7UdrnLNF6KooxxIO7J38DzFj",
+      sessionToken: "IQoJb3JpZ2luX2VjEL7//////////wEaDGV1LWNlbnRyYWwtMSJGMEQCIHWjhQDsIcyPy3E90TIUUPBT/QlrLMpYot653+anh4O0AiB/VEfTkcU96in7WmXjfp0XlHFAohPvhW5f6fq1b3CmDiqiAghXEAAaDDIxMTEyNTUxMzMyNiIMK3GrvCsEy5GBRd9wKv8BkTvj60J/aTwp00N43qZRhZ/6qiA1Mc/c8GucALp8G1S/3nDucFkZNZP9wtKS/Xv9ABnfkvp2OVy/++OfrmPEI3wC0Zwh+y2y0j5izlB0QXBoiqhR9fHbyO0Eq32gUvwMR3ZS+Ro2eqvN6yBA2pYt92qPto0Hv/Cg7jjJvYiV075cu5rOr5yBnV5bTSqAHhgz/Uss1rJ/b2gqvX7eazLg+Ld/X7LgJLIT4JNPYMPl7P2HS2MYxTDSbPrnUj82f0TxBN06FQsGwV1EPhotDao2ATF6l6RztC/42z7T7AsmKvzMI8Sj7F5WZ8y/9pAhCJRFmuW6FrkHD25hZkchTusQMMzTn7MGOp4Bdqkfh7hDx0O4OfxJyCoDWG6qBYEjhmcbD8UyyeooaGly2KrwnDTAIizt3GaPMgykHel/7batGndvUBuK5Pfin3doIzgdMOZRSbPM9Q7wF90wAgJcyLD59RPTgaxkkS4xlKLHVBKPzdGJwCp7zZvu957eMYBa6kp3yQ1Uxk9iT1xwEocvUKr0vIRHU6ben7MbQBf/aSuU2XgjFR3QYaU="
     }
   });
   sns_client.publish({
