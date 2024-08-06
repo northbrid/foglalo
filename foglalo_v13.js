@@ -234,13 +234,14 @@ function selectTimeSlotIfAny() {
 
     if (foundMatchingRange) {
       finished = true;
-      publishSNSMessage(
-        "Szia Norman, talaltam egy idopontot, nezd meg legyszives!",
-        function() {
-          slot.click();
-        }
-      );
-	  makeSound();
+      // publishSNSMessage(
+      //   "Szia Norman, talaltam egy idopontot, nezd meg legyszives!",
+      //   function() {
+      //     slot.click();
+      //   }
+      // );
+	  // makeSound();
+	  slot.click();
       setTimeout(function() {
         slot.click();
       }, 1000);
@@ -312,4 +313,4 @@ function step() {
 }
 
 // 30 seconds would be good
-setInterval(step, 3000);
+setInterval(step, 1800);
