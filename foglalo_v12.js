@@ -147,6 +147,15 @@ function publishSNSMessage(msg, callback) {
   });
 }
 
+function makeSound() {
+	var context = new AudioContext();
+	var oscillator = context.createOscillator();
+	oscillator.type = "sine";
+	oscillator.frequency.value = 800;
+	oscillator.connect(context.destination);
+	oscillator.start();
+}
+
 // ====================== //
 // ===== AUTOMATION ===== //
 // ====================== //
@@ -231,6 +240,7 @@ function selectTimeSlotIfAny() {
           slot.click();
         }
       );
+	  makeSound();
       setTimeout(function() {
         slot.click();
       }, 1000);
