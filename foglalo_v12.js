@@ -131,9 +131,9 @@ function publishSNSMessage(msg, callback) {
     apiVersion: 'latest',
     region: "eu-central-1",
     credentials: {
-      accessKeyId: "ASIATCKAPVRXFSC4XMEX",
-      secretAccessKey: "/XVgEr/3wRz3eubd7UdrnLNF6KooxxIO7J38DzFj",
-      sessionToken: "IQoJb3JpZ2luX2VjEL7//////////wEaDGV1LWNlbnRyYWwtMSJGMEQCIHWjhQDsIcyPy3E90TIUUPBT/QlrLMpYot653+anh4O0AiB/VEfTkcU96in7WmXjfp0XlHFAohPvhW5f6fq1b3CmDiqiAghXEAAaDDIxMTEyNTUxMzMyNiIMK3GrvCsEy5GBRd9wKv8BkTvj60J/aTwp00N43qZRhZ/6qiA1Mc/c8GucALp8G1S/3nDucFkZNZP9wtKS/Xv9ABnfkvp2OVy/++OfrmPEI3wC0Zwh+y2y0j5izlB0QXBoiqhR9fHbyO0Eq32gUvwMR3ZS+Ro2eqvN6yBA2pYt92qPto0Hv/Cg7jjJvYiV075cu5rOr5yBnV5bTSqAHhgz/Uss1rJ/b2gqvX7eazLg+Ld/X7LgJLIT4JNPYMPl7P2HS2MYxTDSbPrnUj82f0TxBN06FQsGwV1EPhotDao2ATF6l6RztC/42z7T7AsmKvzMI8Sj7F5WZ8y/9pAhCJRFmuW6FrkHD25hZkchTusQMMzTn7MGOp4Bdqkfh7hDx0O4OfxJyCoDWG6qBYEjhmcbD8UyyeooaGly2KrwnDTAIizt3GaPMgykHel/7batGndvUBuK5Pfin3doIzgdMOZRSbPM9Q7wF90wAgJcyLD59RPTgaxkkS4xlKLHVBKPzdGJwCp7zZvu957eMYBa6kp3yQ1Uxk9iT1xwEocvUKr0vIRHU6ben7MbQBf/aSuU2XgjFR3QYaU="
+      accessKeyId: "REDACTED",
+      secretAccessKey: "REDACTED",
+      sessionToken: "REDACTED"
     }
   });
   sns_client.publish({
