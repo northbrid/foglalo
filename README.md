@@ -43,9 +43,9 @@ More info: https://chromestatus.com/feature/5166834424217600
 | Name            | Value                                                                   |
 |-----------------|-------------------------------------------------------------------------| 
 | URL Converter   | https://statically.io/convert/                                          |
-| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v16.js           |
-| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v16.js |
-| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v16.js      |
+| GitHub URL      | https://github.com/northbrid/foglalo/blob/main/foglalo_v17.js           |
+| GitHub Raw URL  | https://raw.githubusercontent.com/northbrid/foglalo/main/foglalo_v17.js |
+| CDN-Capable URL | https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v17.js      |
 
 # Disabling Content-Security-Policy
 Content-Security-Policy is an HTTP header that controls what the scripts can do in the webpage.
@@ -68,7 +68,7 @@ document.body.appendChild(document.createElement("script")).setAttribute("src", 
 ```
 Allow a few seconds for it to load, and then paste this snippet:
 ```
-var my_src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v16.js";
+var my_src = "https://cdn.statically.io/gh/northbrid/foglalo/main/foglalo_v17.js";
 document.body.appendChild(document.createElement("script")).setAttribute("src", my_src);
 ```
 
