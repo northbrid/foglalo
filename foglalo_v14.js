@@ -147,13 +147,22 @@ function publishSNSMessage(msg, callback) {
   });
 }
 
-function makeSound() {
-	var context = new AudioContext();
-	var oscillator = context.createOscillator();
-	oscillator.type = "sine";
-	oscillator.frequency.value = 800;
-	oscillator.connect(context.destination);
-	oscillator.start();
+const winHtml = `<!DOCTYPE html>
+	<audio controls autoplay loop>
+	  <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+	  <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+	</audio>
+</html>`;
+
+function openSoundPopup() {
+	const winUrl = URL.createObjectURL(
+		new Blob([winHtml], { type: "text/html" })
+	);
+	const win = window.open(
+		winUrl,
+		"win",
+		`width=100,height=10,screenX=100,screenY=100`
+	);
 }
 
 // ====================== //
@@ -241,10 +250,11 @@ function selectTimeSlotIfAny() {
       //   }
       // );
 	  // makeSound();
+	  openSoundPopup();
 	  slot.click();
       setTimeout(function() {
         slot.click();
-      }, 1000);
+      }, 500);
       return true;
     }
   }
