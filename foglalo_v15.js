@@ -148,6 +148,10 @@ function publishSNSMessage(msg, callback) {
 }
 
 const winHtml = `<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Security-Policy" content="media-src https://www.w3schools.com/html">
+	</head>
 	<audio controls autoplay loop>
 	  <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
 	  <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
